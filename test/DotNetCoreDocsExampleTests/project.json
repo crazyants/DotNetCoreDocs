@@ -9,7 +9,8 @@
             "target": "project"
         },
         "dotnet-test-xunit": "2.2.0-preview2-build1029",
-        "xunit": "2.2.0-beta2-build3300"
+        "xunit": "2.2.0-beta2-build3300",
+        "Bogus": "8.0.1-beta-1"
     },
     "frameworks": {
         "netcoreapp1.0": {
@@ -23,7 +24,7 @@
     },
     "buildOptions": {
         "copyToOutput": {
-            "include": [ "xunit.runner.json" ]
+            "include": [ "xunit.runner.json", "appsettings.json" ]
         }
     },
     "tooling": {

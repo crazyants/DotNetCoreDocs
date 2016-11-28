@@ -1,0 +1,112 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>My API Documentation</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic|Lato:400,400italic,700,700italic">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      border: 0;
+      outline: 0;
+    }
+    p,h1,h2,h3,h4,h5,h6 {
+      margin-bottom: 1em;
+    } 
+    li {
+      margin-bottom: 0.5em;
+    }
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    header {
+      font-family: 'Droid Serif', Georgia, "Times New Roman", Times, serif;
+    }
+    
+    .hero {
+      padding: 20px;
+      background-color: #4C5C68;
+      color: #FFF;
+      font-size: 1.5em;
+      font-family: 'Droid Serif', Georgia, "Times New Roman", Times, serif;
+    }
+    
+    .content {
+      padding: 20px;
+      max-width: 1000px;
+      width: 75%;
+      margin: auto;
+    }
+    
+    .request {
+      border: 1px solid #DDD;
+      padding: 20px;
+    }
+    
+    a {
+      color: #10A1B5;
+    }
+    
+    .home-link {
+      color: #FFF;
+      font-size: 0.5em;
+      text-decoration: none;
+    }
+    
+    .menu {
+      float: left;
+      width: 25%;
+    }
+    
+    .outlet {
+      float: right;
+      width: 75%;
+    }
+
+    .message {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <h1>
+      <a class="home-link" href="{{Configuration.DocumentationRoute}}">
+        <i class="fa fa-home" aria-hidden="true"></i>
+      </a>
+      MyAPI Documentation
+    </h1>
+  </div>
+  <div class="content">
+
+    <div class="menu">
+      <header>
+        <h3>Models</h3>
+      </header>
+      <ul>
+        {{#Models}}
+        <li>
+          <a href="{{Uri}}">{{Name}}</a>
+        </li>
+        {{/Models}}
+      </ul>
+    </div>
+    <div class="outlet">
+      {{> content}}
+    </div>
+  </div>
+</body>
+
+</html>

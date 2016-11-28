@@ -1,1 +1,0 @@
-{"Response":{"Body":"[\"value1\",\"value2\"]","ReasonPhrase":"OK","StatusCode":200,"Headers":{}},"Uri":"http://localhost:5000/api/values","Method":"GET","Body":null}

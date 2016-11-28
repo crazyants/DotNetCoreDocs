@@ -1,0 +1,60 @@
+<header>
+    <h1>{{Model.ModelName}} Requests</h1>
+</header>
+{{#Model.TestRequests}}
+<div class="request">
+    <header>
+        <h3>{{Description}}</h3>
+    </header>
+    <h4>Request</h4>
+    <div class="message">
+        <code>
+            <p>
+                <b>{{Method}}</b> <a href="{{Uri}}">{{Uri}}</a>
+            </p>
+            <p>
+                Content-Type: {{Response.ContentType}}
+                <br>
+                Headers:
+                <ul>
+                {{#Headers}}
+                    <li>{{Key}} = {{Value}}</li>
+                {{/Headers}}
+                </ul>
+            </p>
+        </code>
+        {{#if HasBody}}
+            <p><code>Body:</code></p>
+            <pre><code class="json">{{Body}}</code></pre>
+        {{/if}}
+    </div>
+    <h4>Response</h4>
+    <div class="message">
+        <p>
+            <code>Content-Type: {{Response.ContentType}}</code>
+            <br>
+            <code>Headers:</code>
+            <ul>
+                {{#Response.Headers}}
+                    <li><code>{{Key}} = {{Value}}</code></li>
+                {{/Response.Headers}}
+            </ul>
+        </p>
+        {{#if Response.HasBody}}
+            <p><code>Body:</code></p>
+            <pre><code class="json">{{Response.Body}}</code></pre>
+        {{/if}}
+    </div>
+</div>
+{{/Model.TestRequests}}
+
+<script>
+    // beautify the json
+    $('.json').each((i, code) => {
+        let content = code.innerHTML;
+        if(content.match(/[a-z]/i)) {
+            let data = JSON.parse(content);
+            code.innerHTML= JSON.stringify(data, null, 4);    
+        }          
+    });
+</script>

@@ -1,11 +1,27 @@
 {
   "version": "1.0.0-*",
 
+  "buildOptions": {
+    "embed": {
+      "include": ["**/*.hbs"]
+    },
+    
+    "copyToOutput": {
+      "include": ["**/*.hbs"]
+    }
+  },
+
+  "publishOptions": {
+    "include": "**/*.hbs"
+  },
+
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "Microsoft.AspNetCore.TestHost": "1.0.0",
     "Newtonsoft.Json": "9.0.1",
-    "Handlebars.Net": "1.8.0"
+    "Handlebars.Net": "1.8.0",
+    "Microsoft.Extensions.DependencyInjection": "1.0.0",
+    "CommonMark.NET": "0.14.0"
   },
 
   "frameworks": {

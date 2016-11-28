@@ -5,6 +5,7 @@ namespace DotNetCoreDocs.Writers
 {
     public interface IWriter
     {
-        Task WriteRequestAsync(HttpRequestMessage request, HttpResponseMessage response);
+        Task WriteRequestAsync(string modelName, string filePath, string description, HttpRequestMessage request, HttpResponseMessage response);
+        Task LoadRequestBodyAsync(HttpRequestMessage request);
     }
 }

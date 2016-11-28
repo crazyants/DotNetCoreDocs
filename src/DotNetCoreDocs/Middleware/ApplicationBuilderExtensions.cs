@@ -4,9 +4,9 @@ namespace DotNetCoreDocs.Middleware
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseDocs(this IApplicationBuilder builder, string route)
+        public static IApplicationBuilder UseDocs(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<DocumentationMiddleware>(route);
+            return builder.UseMiddleware<DocumentationMiddleware>();
         }
     }
 }

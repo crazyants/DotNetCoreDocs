@@ -1,50 +1,60 @@
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using DotNetCoreDocs.Configuration;
 using DotNetCoreDocs.Writers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetCoreDocs
 {
-    public class DocsFixture<TStartup, TWriter> : IDisposable 
+    public class DocsFixture<TEntity, TStartup, TWriter> : IDisposable 
         where TStartup : class
         where TWriter : IWriter
     {
         private readonly TestServer _server;
         private readonly HttpClient _client;
-        private const string _defaultBaseAddress = "http://localhost:5000";
+        private readonly DocsConfiguration _config;
         private readonly IWriter _writer;
+        private IServiceProvider _services;
 
         public DocsFixture()
         {
-            var builder = new WebHostBuilder().UseStartup<TStartup>();
+            var builder = new WebHostBuilder()
+                .UseStartup<TStartup>();
+
             _server = new TestServer(builder);
-
+            _services = builder.Build().Services;
+            _config = _services.GetService<DocsConfiguration>();
             _client = _server.CreateClient();
-            SetBaseAddress(new Uri(_defaultBaseAddress));
-
+            _client.BaseAddress = new Uri(_config.BaseAddress);
             _writer = GetWriter();
+
+            DeleteFile();
         }
 
-        public void SetBaseAddress(Uri address)
+        public T GetService<T>()
         {
-            _client.BaseAddress = address;
+            return (T)_services.GetService(typeof(T));
         }
 
-        public async Task<HttpResponseMessage> MakeRequest(HttpRequestMessage request)
+        public async Task<HttpResponseMessage> MakeRequest(string description, HttpRequestMessage request)
         {
+            await _writer.LoadRequestBodyAsync(request);
+
             var response = await _client.SendAsync(request);
-
-            await _writer.WriteRequestAsync(request, response);
+            var modelName = typeof(TEntity).Name;
+            await _writer.WriteRequestAsync(modelName, GetFileName(), description, request, response);
 
             return response;
         }
 
-        public async Task<HttpResponseMessage> MakeRequest(HttpMethod method, string route)
+        public async Task<HttpResponseMessage> MakeRequest(string description, HttpMethod method, string route)
         {
             var request = new HttpRequestMessage(method, route);
-            return await MakeRequest(request);
+            return await MakeRequest(description, request);
         }
 
         public void Dispose()
@@ -55,7 +65,19 @@ namespace DotNetCoreDocs
 
         private IWriter GetWriter()
         {
-            return Activator.CreateInstance<TWriter>();
+            return (IWriter)Activator.CreateInstance(typeof(TWriter), _config);
+        }
+
+        private string GetFileName()
+        {
+            return _config.GetRequestsFileName(typeof(TEntity).Name);
+        }
+
+        private void DeleteFile()
+        {
+            var fileName = GetFileName();
+            if(File.Exists(fileName))
+                File.Delete(fileName);
         }
     }
 }

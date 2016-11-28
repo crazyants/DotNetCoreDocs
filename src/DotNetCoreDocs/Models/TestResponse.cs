@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace DotNetCoreDocs.Models
@@ -13,17 +12,25 @@ namespace DotNetCoreDocs.Models
         public string ReasonPhrase { get; set; }
         public HttpStatusCode StatusCode { get; set; }
         public Dictionary<string, string> Headers { get; set; }
+        public string ContentType { get; set; }
+        public bool HasBody {
+            get {
+                return !string.IsNullOrEmpty(Body);
+            }
+        }
+
         public TestResponse()
         {
             
         }
-        
+
         public TestResponse(HttpResponseMessage response)
         {
             _response = response;
             Headers = GetHeaders(response);
             StatusCode = response.StatusCode;
             ReasonPhrase = response.ReasonPhrase;
+            ContentType = response.Content?.Headers?.ContentType?.MediaType;
         }
 
         public async Task ReadBody()
