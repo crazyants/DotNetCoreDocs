@@ -40,6 +40,7 @@ namespace DotNetCoreDocsTests
             Assert.Equal("http://localhost:5000", result.BaseAddress);
             Assert.Equal("/docs", result.DocumentationRoute);
             Assert.Equal("README.md", result.ReadmePath);
+            Assert.Equal("API Documentation", result.DisplayName);
         }
 
         private Mock<IConfiguration> GetConfigMockWithRequiredParameters()

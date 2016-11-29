@@ -99,6 +99,7 @@ public class TodoItemControllerIntegrationTests : IClassFixture<DocsFixture<Todo
 
 | Configuration Key | Description | Default Value | Required |
 |----|----|----|---|
+| **DisplayName** | The display name to use in the documentation | API Documentation | N |
 | **BaseAddress** | The host address to use when running the tests | http://localhost:5000 | N |
 | **RequestsDirectory** | Directory to store the test results (relative to the test project, must be accessible by the api) | N/A | Y |
 | **DocumentationRoute** | Documentation route path string. Determines where to mount the documentation | /docs | N |
@@ -112,6 +113,7 @@ public class TodoItemControllerIntegrationTests : IClassFixture<DocsFixture<Todo
 ```
 {
   "DocsConfiguration": {
+    "DisplayName": "My API",
     "BaseAddress": "http://localhost:5000",
     "RequestsDirectory": "../../src/DotNetCoreDocsExample/_data",
     "DocumentationRoute": "/docs",

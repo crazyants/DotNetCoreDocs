@@ -8,6 +8,7 @@ namespace DotNetCoreDocs.Configuration
         public static DocsConfiguration GetConfiguration(IConfiguration config)
         {
             return new DocsConfiguration() {
+                DisplayName = GetValue(config["DocsConfiguration:DisplayName"], "API Documentation"),
                 BaseAddress = GetValue(config["DocsConfiguration:BaseAddress"], "http://localhost:5000"),
                 RequestsDirectory = GetRequiredValue(config["DocsConfiguration:RequestsDirectory"], "RequestsDirectory"),
                 DocumentationRoute = GetValue(config["DocsConfiguration:DocumentationRoute"], "/docs"),
