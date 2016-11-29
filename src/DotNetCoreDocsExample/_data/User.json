@@ -1,0 +1,62 @@
+{
+  "ModelName": "User",
+  "TestRequests": [
+    {
+      "Response": {
+        "Body": "{\"id\":46,\"firstName\":\"Halle\",\"lastName\":\"Gerhold\"}",
+        "ReasonPhrase": "OK",
+        "StatusCode": 200,
+        "Headers": {},
+        "ContentType": "application/json",
+        "HasBody": true
+      },
+      "Uri": "http://localhost:5000/api/Users/46",
+      "Method": "GET",
+      "Body": "",
+      "Description": "Get User By Id",
+      "ContentType": null,
+      "Headers": {
+        "Host": "[\"localhost:5000\"]"
+      },
+      "HasBody": false
+    },
+    {
+      "Response": {
+        "Body": "{\"id\":47,\"firstName\":\"Ashlee\",\"lastName\":\"Dietrich\"}",
+        "ReasonPhrase": "Created",
+        "StatusCode": 201,
+        "Headers": {},
+        "ContentType": "application/json",
+        "HasBody": true
+      },
+      "Uri": "http://localhost:5000/api/Users",
+      "Method": "POST",
+      "Body": "{\"Id\":0,\"FirstName\":\"Ashlee\",\"LastName\":\"Dietrich\"}",
+      "Description": "Post User",
+      "ContentType": "application/json",
+      "Headers": {
+        "Host": "[\"localhost:5000\"]"
+      },
+      "HasBody": true
+    },
+    {
+      "Response": {
+        "Body": "[{\"id\":46,\"firstName\":\"Halle\",\"lastName\":\"Gerhold\"},{\"id\":47,\"firstName\":\"Ashlee\",\"lastName\":\"Dietrich\"},{\"id\":48,\"firstName\":\"Carley\",\"lastName\":\"Towne\"}]",
+        "ReasonPhrase": "OK",
+        "StatusCode": 200,
+        "Headers": {},
+        "ContentType": "application/json",
+        "HasBody": true
+      },
+      "Uri": "http://localhost:5000/api/Users",
+      "Method": "GET",
+      "Body": "",
+      "Description": "Get Users",
+      "ContentType": null,
+      "Headers": {
+        "Host": "[\"localhost:5000\"]"
+      },
+      "HasBody": false
+    }
+  ]
+}

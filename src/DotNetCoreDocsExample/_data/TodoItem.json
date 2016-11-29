@@ -1,0 +1,62 @@
+{
+  "ModelName": "TodoItem",
+  "TestRequests": [
+    {
+      "Response": {
+        "Body": "[{\"id\":58,\"description\":\"Nemo quis dolor ut non ut nobis necessitatibus praesentium et.\"}]",
+        "ReasonPhrase": "OK",
+        "StatusCode": 200,
+        "Headers": {},
+        "ContentType": "application/json",
+        "HasBody": true
+      },
+      "Uri": "http://localhost:5000/api/TodoItems",
+      "Method": "GET",
+      "Body": "",
+      "Description": "Get TodoItems",
+      "ContentType": null,
+      "Headers": {
+        "Host": "[\"localhost:5000\"]"
+      },
+      "HasBody": false
+    },
+    {
+      "Response": {
+        "Body": "{\"id\":59,\"description\":\"Sed voluptatem dolores.\"}",
+        "ReasonPhrase": "Created",
+        "StatusCode": 201,
+        "Headers": {},
+        "ContentType": "application/json",
+        "HasBody": true
+      },
+      "Uri": "http://localhost:5000/api/TodoItems",
+      "Method": "POST",
+      "Body": "{\"Id\":0,\"Description\":\"Sed voluptatem dolores.\"}",
+      "Description": "Post TodoItem",
+      "ContentType": "application/json",
+      "Headers": {
+        "Host": "[\"localhost:5000\"]"
+      },
+      "HasBody": true
+    },
+    {
+      "Response": {
+        "Body": "{\"id\":60,\"description\":\"Alias natus eaque excepturi.\"}",
+        "ReasonPhrase": "OK",
+        "StatusCode": 200,
+        "Headers": {},
+        "ContentType": "application/json",
+        "HasBody": true
+      },
+      "Uri": "http://localhost:5000/api/TodoItems/60",
+      "Method": "GET",
+      "Body": "",
+      "Description": "Get TodoItem By Id",
+      "ContentType": null,
+      "Headers": {
+        "Host": "[\"localhost:5000\"]"
+      },
+      "HasBody": false
+    }
+  ]
+}
