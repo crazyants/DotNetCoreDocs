@@ -7,12 +7,13 @@ Generate web api documentation from integration tests.
 Based on previous work such as [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation).
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ilmuycxm6g9f6y96?svg=true)](https://ci.appveyor.com/project/jaredcnance/dotnetcoredocs)
+[![NuGet Version](https://img.shields.io/nuget/v/DotNetCoreDocs.svg)](https://www.nuget.org/packages/DotNetCoreDocs/)
 
 ![Model](screen_model.png)
 
 ## Installation
 
-Installation using NuGet:
+Installation using [NuGet](https://www.nuget.org/packages/DotNetCoreDocs/):
 
 ```
 Install-Package DotNetCoreDocs
