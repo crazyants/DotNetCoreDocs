@@ -12,7 +12,9 @@
   },
 
   "publishOptions": {
-    "include": "**/*.hbs"
+    "include": "**/*.hbs",
+    "licenseUrl": "https://github.com/jaredcnance/DotNetCoreDocs/blob/master/LICENSE",
+    "projectUrl": "https://github.com/jaredcnance/DotNetCoreDocs"
   },
 
   "dependencies": {
