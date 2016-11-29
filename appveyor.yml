@@ -11,7 +11,8 @@ nuget:
   disable_publish_on_pr: true
 build_script:  
 - ps: dotnet --info
-- ps: dotnet restore
+- ps: dotnet restore test\DotNetCoreDocsTests
+- ps: Get-ChildItem -Path "test\DotNetCoreDocsTests" 
 - ps: dotnet test .\test\DotNetCoreDocsTests -c Release
 - ps: dotnet pack .\src\DotNetCoreDocs -c Release -o .\artifacts
 test: off  
