@@ -6,7 +6,7 @@ Generate web api documentation from integration tests.
 
 Based on previous work such as [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation).
 
-![Readme](screen_readme.png)
+![Model](screen_model.png)
 
 ## TODO
 - [ ] Write tests
