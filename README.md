@@ -127,6 +127,7 @@ public class TodoItemControllerIntegrationTests : IClassFixture<DocsFixture<Todo
 
 ### Customizing the Documentation Templates
 
+I am using the [Handlebars.Net](https://github.com/rexm/Handlebars.Net) library to parse [hbs templates](http://handlebarsjs.com/). 
 You can customize the templates by specifying paths to the template hbs files in the configuration. 
 There are currently 3 template files:
 

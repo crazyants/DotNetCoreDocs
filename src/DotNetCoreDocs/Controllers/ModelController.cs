@@ -18,7 +18,6 @@ namespace DotNetCoreDocs.Controllers
         public string GetMarkup(string modelName)
         {
             var rootSource = GetRootTemplate();
-
             var modelSource = GetModelTemplate();
 
             var json = File.ReadAllText(_configuration.GetRequestsFileName(modelName));
@@ -27,14 +26,15 @@ namespace DotNetCoreDocs.Controllers
 
             var template = Handlebars.Compile(rootSource);
 
-            var data = new {
-                Configuration =  _configuration,
+            var data = new
+            {
+                Configuration = _configuration,
                 Models = GetModelNames(),
                 Model = JsonConvert.DeserializeObject<RequestsDocument>(json)
             };
 
             return template(data);
         }
-        
+
     }
 }
