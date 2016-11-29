@@ -41,6 +41,7 @@ namespace DotNetCoreDocs.Controllers
             return path
                 .Replace(_configuration.RequestsDirectory, string.Empty)
                 .Replace("/", string.Empty)
+                .Replace("\\", string.Empty)
                 .Replace(".json", string.Empty);
         }
 
