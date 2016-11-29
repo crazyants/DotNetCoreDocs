@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "0.1.0-alpha1-*",
 
   "buildOptions": {
     "embed": {
@@ -12,7 +12,9 @@
   },
 
   "publishOptions": {
-    "include": "**/*.hbs"
+    "include": "**/*.hbs",
+    "licenseUrl": "https://github.com/jaredcnance/DotNetCoreDocs/blob/master/LICENSE",
+    "projectUrl": "https://github.com/jaredcnance/DotNetCoreDocs"
   },
 
   "dependencies": {
