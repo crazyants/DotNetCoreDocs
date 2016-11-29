@@ -6,12 +6,9 @@ Generate web api documentation from integration tests.
 
 Based on previous work such as [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation).
 
-![Model](screen_model.png)
+[![Build status](https://ci.appveyor.com/api/projects/status/ilmuycxm6g9f6y96?svg=true)](https://ci.appveyor.com/project/jaredcnance/dotnetcoredocs)
 
-## TODO
-- [ ] Write tests
-- [ ] Deployment Scripts
-- [ ] Push to GitHub
+![Model](screen_model.png)
 
 ## Installation
 
@@ -21,9 +18,22 @@ Installation using NuGet:
 Install-Package DotNetCoreDocs
 ```
 
+## Running The Example
+
+```
+$ git clone https://github.com/jaredcnance/DotNetCoreDocs.git
+$ cd DotNetCoreDocs
+$ dotnet restore
+$ cd ./test/DotNetCoreDocsExampleTests
+$ dotnet test
+$ cd ../../src/DotNetCoreDocsExample
+$ dotnet run
+$ open http://localhost:5000/docs
+```
+
 ## Usage
 
-See the example projects (`./src/DotNetCoreDocsExample` and `./test/DotNetCoreDocsExampleTests`) for detailed usage examples.
+See the example projects (`./src/DotNetCoreDocsExample` and `./test/DotNetCoreDocsExampleTests`) for a detailed usage example.
 
 - Add the following to `ConfigureServices` method in `Startup.cs` and add the required configuration to `appsettings.json` (see Configuration below).
 
@@ -38,7 +48,15 @@ app.UseDocs();
 ```
 
 - Write Integrations Tests:
-
+  1. Create a test class that implements `IClassFixture<DocsFixture<TEntity, TStartup, JsonDocWriter>>`
+  2. Inject the fixture via the constructor:
+     ```
+     public TEntityControllerIntegrationTests(DocsFixture<TodoItem, Startup, JsonDocWriter> fixture)
+     {
+        _fixture = fixture;
+     }
+     ```
+  3. Define a test that makes an HttpRequest using the fixture's `MakeRequest` method
 ```
 public class TodoItemControllerIntegrationTests : IClassFixture<DocsFixture<TodoItem, Startup, JsonDocWriter>>
 {
