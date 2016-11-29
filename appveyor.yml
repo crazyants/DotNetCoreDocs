@@ -10,13 +10,13 @@ branches:
 nuget:  
   disable_publish_on_pr: true
 build_script:  
-- ps: dotnet --info
-- ps: dotnet restore
-- ps: dotnet build src\DotNetCoreDocs
-- ps: dotnet build test\DotNetCoreDocsTests
-- ps: dotnet restore
-- ps: dotnet test .\test\DotNetCoreDocsTests -c Release
-- ps: dotnet pack .\src\DotNetCoreDocs -c Release -o .\artifacts
+- cmd: dotnet --info
+- cmd: dotnet restore
+- cmd: dotnet build src\DotNetCoreDocs
+- cmd: dotnet build test\DotNetCoreDocsTests
+- cmd: dotnet restore
+- cmd: dotnet test .\test\DotNetCoreDocsTests -c Release
+- cmd: dotnet pack .\src\DotNetCoreDocs -c Release -o .\artifacts
 test: off  
 artifacts:  
 - path: .\artifacts\**\*.nupkg
