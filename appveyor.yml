@@ -1,3 +1,5 @@
+os: Visual Studio 2015
+
 version: '{build}'  
 pull_requests:  
   do_not_increment_build_number: true
@@ -8,7 +10,9 @@ branches:
 nuget:  
   disable_publish_on_pr: true
 build_script:  
-- ps: .\Build.ps1
+- ps: dotnet --info
+- ps: dotnet test .\test\DotNetCoreDocsTests -c Release
+- ps: dotnet pack .\src\DotNetCoreDocs -c Release -o .\artifacts
 test: off  
 artifacts:  
 - path: .\artifacts\**\*.nupkg
