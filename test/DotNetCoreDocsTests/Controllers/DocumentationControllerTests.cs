@@ -30,7 +30,9 @@ namespace DotNetCoreDocsTests.Controllers
             // arrange
             var filePath = _requestsDirectory + "/MyModel.json";
             Directory.CreateDirectory(_requestsDirectory);
-            File.Create(filePath);
+            
+            var stream = File.Create(filePath);
+            stream.Dispose();
 
             // act
             var modelNames = GetModelNames();
